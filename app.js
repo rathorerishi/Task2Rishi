@@ -1,133 +1,3 @@
-// document.addEventListener('DOMContentLoaded', () => {
-//   const fileInput = document.getElementById('fileInput');
-//   const importButton = document.getElementById('importButton');
-
-//   importButton.addEventListener('click', () => {
-//     openModal();
-//   });
-// });
-
-// function openModal() {
-//   const modal = document.getElementById('formatModal');
-//   modal.style.display = 'block';
-// }
-
-// function closeModal() {
-//   const modal = document.getElementById('formatModal');
-//   modal.style.display = 'none';
-// }
-
-// function applyFormat() {
-//   closeModal();
-
-//   // Fetch the format details from the form
-//   const fileType = document.getElementById('fileType').value;
-//   const characterEncoding = document.getElementById('characterEncoding').value;
-//   const delimiter = document.getElementById('delimiter').value;
-//   const hasHeader = document.getElementById('hasHeader').checked;
-
-//   // Now you can use these format details when importing the data
-//   importData(fileType, characterEncoding, delimiter, hasHeader);
-// }
-
-// async function importData(fileType, characterEncoding, delimiter, hasHeader) {
-//   try {
-//     const file = fileInput.files[0];
-//     if (!file) {
-//       alert('Please choose a file before importing.');
-//       return;
-//     }
-
-//     const formData = new FormData();
-//     formData.append('file', file);
-
-//     // Append format details to the formData
-//     formData.append('fileType', fileType);
-//     formData.append('characterEncoding', characterEncoding);
-//     formData.append('delimiter', delimiter);
-//     formData.append('hasHeader', hasHeader);
-
-//     const response = await fetch('/uploadFile', {
-//       method: 'POST',
-//       body: formData
-//     });
-
-//     const data = await response.json();
-//     updateProductList(data);
-//   } catch (error) {
-//     console.error('Error importing data:', error.message);
-//   }
-// }
-
-
-// function updateProductList(data) {
-//   const productListTable = document.getElementById('product-list');
-
-//   // Clear previous content
-//   productListTable.innerHTML = '';
-
-//   // Create table header
-//   const tableHeader = document.createElement('tr');
-//   tableHeader.innerHTML = `
-//       <th>Title</th>
-//       <th>Price</th>
-//       <th>Popularity</th>
-//   `;
-//   productListTable.appendChild(tableHeader);
-
-//   // Check if 'products' property exists in data
-//   if (data.products) {
-//       // Determine if the data is in JSON format or CSV format
-//       const isCSVFormat = Array.isArray(data.products);
-
-//       if (isCSVFormat) {
-//           // Data is in CSV format
-//           data.products.forEach(product => {
-//               const productRow = document.createElement('tr');
-//               productRow.classList.add('product');
-
-//               // Add product details to the table using the correct case
-//               productRow.innerHTML = `
-//                   <td>${product.Title}</td>
-//                   <td>$${product.Price}</td>
-//                   <td>${product.Popularity}</td>
-//               `;
-
-//               // Append the product row to the product list table
-//               productListTable.appendChild(productRow);
-//           });
-//       } else {
-//           // Data is in JSON format
-//           Object.keys(data.products).forEach(key => {
-//               const product = data.products[key];
-
-//               const productRow = document.createElement('tr');
-//               productRow.classList.add('product');
-
-//               // Add product details to the table using the correct case
-//               productRow.innerHTML = `
-//                   <td>${product.title}</td>
-//                   <td>$${product.price}</td>
-//                   <td>${product.popularity}</td>
-//               `;
-
-//               // Append the product row to the product list table
-//               productListTable.appendChild(productRow);
-//           });
-//       }
-//   } else {
-//       // If 'products' property is missing, handle accordingly (adjust as needed)
-//       console.error('Invalid data format: "products" property is missing', data);
-//   }
-// }
-
-
-
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
   const fileInput = document.getElementById('fileInput');
   const importButton = document.getElementById('importButton');
@@ -193,14 +63,6 @@ function moveOptionsBetweenLists(sourceList, destinationList) {
   });
 }
 
-// function applyDisplayHandling(fieldsToDisplayList) {
-//   const selectedFields = Array.from(fieldsToDisplayList.options).map(option => option.value);
-//   // Implement the logic to update the table based on the selected fields
-//   console.log('Selected Fields:', selectedFields);
-
-//   closeModal();
-//   closeDisplayHandlingModal();
-// }
 
 function applyDisplayHandling(fieldsToDisplayList) {
   const selectedFields = Array.from(fieldsToDisplayList.options).map(option => option.value);
@@ -248,81 +110,6 @@ async function importData(fileType, characterEncoding, delimiter, hasHeader, sel
 
 
 
-
-
-// function updateProductList(data, selectedFields) {
-//   const productListTable = document.getElementById('product-list');
-
-//   // Clear previous content
-//   productListTable.innerHTML = '';
-
-//   // Create table header based on selected fields
-//   const tableHeader = document.createElement('tr');
-//   selectedFields.forEach(field => {
-//     const th = document.createElement('th');
-//     th.textContent = field;
-//     tableHeader.appendChild(th);
-//   });
-//   productListTable.appendChild(tableHeader);
-
-//   // Check if 'products' property exists in data
-//   if (data.products) {
-//     // Determine if the data is in JSON format or CSV format
-//     const isCSVFormat = Array.isArray(data.products);
-
-//     if (isCSVFormat) {
-//       // Data is in CSV format
-//       data.products.forEach(product => {
-//         const productRow = document.createElement('tr');
-//         productRow.classList.add('product');
-
-//         // Add product details to the table using the selected fields
-//         selectedFields.forEach(field => {
-//           const td = document.createElement('td');
-//           // Access the product data using the correct case
-//           const fieldValue = typeof product[field] !== 'undefined' ? product[field] : '';
-//           td.textContent = fieldValue;
-//           productRow.appendChild(td);
-//         });
-
-//         // Append the product row to the product list table
-//         productListTable.appendChild(productRow);
-//       });
-//     } else {
-//       // Data is in JSON format
-//       Object.keys(data.products).forEach(uniqueIdentifier => {
-//         const product = data.products[uniqueIdentifier];
-
-//         const productRow = document.createElement('tr');
-//         productRow.classList.add('product');
-
-//         // Add product details to the table using the selected fields
-//         selectedFields.forEach(field => {
-//           const td = document.createElement('td');
-//           // Access the product data using the correct case
-//           const fieldValue = typeof product[field] !== 'undefined' ? product[field] : '';
-//           td.textContent = fieldValue;
-//           productRow.appendChild(td);
-//         });
-
-//         // Append the product row to the product list table
-//         productListTable.appendChild(productRow);
-//       });
-//     }
-//   } else {
-//     // If 'products' property is missing, handle accordingly (adjust as needed)
-//     console.error('Invalid data format: "products" property is missing', data);
-//   }
-// }
-
-
-
-
-
-
-
-
-
 function updateProductList(data, selectedFields) {
   const productListTable = document.getElementById('product-list');
 
@@ -367,8 +154,8 @@ function updateProductList(data, selectedFields) {
       // Data is in JSON format
       Object.keys(data.products).forEach(uniqueIdentifier => {
         const product = data.products[uniqueIdentifier];
-        // console.log("productttt", product[price]);
-        
+        // console.log("productttt", product);
+
 
       // data.products.forEach(product => {
 
@@ -377,6 +164,9 @@ function updateProductList(data, selectedFields) {
 
         // Add product details to the table using the selected fields
         selectedFields.forEach(field => {
+          // console.log("fielddd",field);
+          field= field.toLowerCase();
+          // console.log("fieldddii",field);
           const td = document.createElement('td');
           // Access the product data using the correct case
           const fieldValue = typeof product[field] !== 'undefined' ? product[field] : ' ';
@@ -390,17 +180,9 @@ function updateProductList(data, selectedFields) {
       });
     }
   } else {
-    // If 'products' property is missing, handle accordingly (adjust as needed)
     console.error('Invalid data format: "products" property is missing', data);
   }
 }
-
-
-
-
-
-
-
 
 
 
