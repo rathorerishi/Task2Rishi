@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Product Display</title>
+</head>
+
+<body>
+  <p>select file</p>
+  <input type="file" id="fileInput" accept=".csv, .json">
+  
+  <button id="importButton">Import Data</button>
+  <button id="displayHandlingButton">Display Handling</button>
+  
+  
+
+  <div id="formatModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Specify Format</h2>
+      <form id="formatForm">
+        <label for="fileType">File Type:</label>
+        <select id="fileType" name="fileType">
+          <option value="json">JSON</option>
+          <option value="csv">CSV</option>
+        </select>
+
+        <label for="characterEncoding">Character Encoding:</label>
+        <input type="text" id="characterEncoding" name="characterEncoding" value="UTF-8">
+
+        <label for="delimiter">Delimiter:</label>
+        <input type="text" id="delimiter" name="delimiter" value="," placeholder="e.g., comma">
+
+        <label for="hasHeader">Has Header:</label>
+        <input type="checkbox" id="hasHeader" name="hasHeader" checked>
+
+        <button type="button" onclick="applyFormat()">Apply Format</button>
+      </form>
+    </div>
+  </div>
+
+
+
+  <div id="product-list"></div>
+  <script src="app.js"></script>
+
+
+
+
+
+
+
+
+
+
+  <!-- Add this button wherever you want in your HTML -->
+  
+
+  <!-- Add this modal at the end of the body -->
+  <div id="displayHandlingModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeDisplayHandlingModal()">&times;</span>
+      <h2>Display Handling</h2>
+      <form>
+        <label for="availableFieldsList">Available Fields</label>
+        
+        <label for="fieldsToDisplayList">Fields to be Displayed</label>
+        <button type="button" id="applyDisplayHandling">Apply Display Handling</button>
+
+        <div><select id="availableFieldsList" multiple></select>
+
+          <button type="button" id="addButton"> >> </button>
+          <button type="button" id="removeButton"> << </button>
+
+          <select id="fieldsToDisplayList" multiple></select>
+            
+            
+          </select></div>
+        
+        
+        <div>
+          
+        </div>
+
+        
+
+        
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <!-- <div id="product-list"></div>
+  <script src="app.js"></script> -->
+</body>
+
+</html>

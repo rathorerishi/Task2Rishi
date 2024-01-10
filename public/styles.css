@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #ebf5f5;
+  }
+  body{
+    background-color: rgb(241, 246, 244);
+  }
+  h2{
+    
+    color: rgb(166, 198, 51);
+    font-family: "Times New Roman", Times, serif;
+    font-weight: normal;
+  }
+  
